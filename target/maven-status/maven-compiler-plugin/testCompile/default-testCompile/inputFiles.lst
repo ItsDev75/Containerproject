@@ -1,0 +1,5 @@
+/vagrant/Vprofileproject/src/test/java/com/visualpathit/account/controllerTest/UserControllerTest.java
+/vagrant/Vprofileproject/src/test/java/com/visualpathit/account/modelTest/UserTest.java
+/vagrant/Vprofileproject/src/test/java/com/visualpathit/account/controllerTest/SampleTest.java
+/vagrant/Vprofileproject/src/test/java/com/visualpathit/account/modelTest/RoleTest.java
+/vagrant/Vprofileproject/src/test/java/com/visualpathit/account/setup/StandaloneMvcTestViewResolver.java

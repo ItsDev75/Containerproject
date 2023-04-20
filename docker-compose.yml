@@ -1,0 +1,55 @@
+version: '3'
+services:
+  vprodb:
+    image: devsaini75/vprofiledb:v1
+    ports:
+      - "3306:3306"
+    volumes:
+      - vprodbata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbpass
+    restart: always
+    networks:
+      - vpronet
+  vprocache01:
+    image: memcached 
+    ports:
+      - "11211:11211"
+    restart: always
+    networks:
+      - vpronet
+  vpromq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    entrypoint: 
+      - rabbitmq-server
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    networks:
+      - vpronet
+  vproapp:
+    image: devsaini75/vprofileapp:v1
+    ports:
+      - "8080:8080"
+    volumes:
+      - vproappdata:/usr/local/tomcat/webapps
+    restart: always
+    networks:
+      - vpronet
+  vproweb:
+    image: devsaini75/vprofileweb:v1  
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - vpronet
+
+volumes:
+  vprodbata:
+  vproappdata:
+
+networks:
+  vpronet:
